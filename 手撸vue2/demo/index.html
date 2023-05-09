@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>vue</title>
+    </head>
+    <body>
+        <!-- <div id="app" style="color:red;font-size:20px;">
+            hello world{{msg}}
+            <div>{{list1}}</div>
+        </div> -->
+        <div id="app">
+            hello world{{msg}}
+        </div>
+        <script src="dist/vue.js"></script>
+        <script>
+            Vue.Mixin({
+                created () {
+
+                },
+            })
+            let vm = new Vue({
+                el: '#app',
+                data () {
+                    return{
+                        msg: '1111',
+                        a: {
+                            b: 20
+                        },
+                        list: [
+                            1, 2, 3
+                        ],
+                        list1: [
+                            {a: 1},
+                            {b: 2}
+                        ]
+                    }
+                },
+                props: {
+
+                },
+                watch: {
+
+                }
+            })
+        </script>
+    </body>
+</html>

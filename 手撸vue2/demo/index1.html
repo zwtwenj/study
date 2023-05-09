@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>vue</title>
+    </head>
+    <body>
+        <div id="app" style="color:red;font-size:20px;">
+            hello world{{msg}}
+            <div>{{list1}}</div>
+        </div>
+        <script src="dist/vue.js"></script>
+        <script>
+            Vue.Mixin({
+                created () {
+
+                }
+            })
+            let vm = new Vue({
+                el: '#app',
+                data () {
+                    return{
+                        msg: '1111',
+                        a: {
+                            b: 20
+                        },
+                        list: [
+                            1, 2, 3
+                        ],
+                        list1: [
+                            {a: 1},
+                            {b: 2}
+                        ]
+                    }
+                },
+                props: {
+
+                },
+                watch: {
+
+                }
+            })
+            // vue初次渲染的流程
+            // 模板编译 template render el 必须要有el
+            // 如果el中有template那么会直接编译template，否则会编译el的元素来编译
+            // 1.初始化数据
+            // 2.将模板进行编译
+            // 3.变成render函数
+            // 4.生成虚拟节点
+            // 5.变成真实dom
+            // 6.放到页面上
+
+            setTimeout(() => {
+            //    vm.msg = '张三'
+            //    vm._updata(vm._render())
+                vm.msg = '张三'
+            }, 2000)
+            // 问题：实现自动更新
+            // 1.数据变化，自动更新视图
+            // vm._updata(vm._render())
+            // vue中更新组件策略是以组件为单位的，给每一个组件添加一个watcher
+            // 属性变化后，调用这个watcher
+            // 2.实现对象的收集依赖
+            // 数组收集
+            // 1.给所有对象类型添加一个dep[]
+            // 2.获取数组的值，会调用get方法，希望让当前的数组记住这个渲染的watcher
+            //  2.1获取到当前的dep
+            //  2.2当前面对数组取值的时候，我们就让数组的dep记住这个watcher
+            // 3.我们更新数组的时候push等等方法，找到这个watcher进行更新
+
+            // 列队处理
+            // 一个对象被多次改变，那么将会被调用多次更新，这样耗费性能，所以实际情况是做批量处理
+            // 数据更新后，不会马上执行
+        </script>
+    </body>
+</html>

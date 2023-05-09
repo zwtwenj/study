@@ -1,0 +1,14 @@
+{
+  "name": "myVue",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rollup -c -w"
+  },
+  "dependencies": {
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "rollup": "^2.79.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-serve": "^2.0.2"
+  }
+}
