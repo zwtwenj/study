@@ -33,5 +33,10 @@ registerMicroApps([{
         console.log('销毁后')
     }
 })
-
-start()
+console.log(registerMicroApps)
+start({
+    sandbox: {
+        strictStyleIsolation: true, // 启用shadowDOM
+        experimentalStyleIsolation:true // 增加一个特殊的选择器规则来限定其影响范围
+    }
+})
