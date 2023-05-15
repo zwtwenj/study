@@ -4,7 +4,7 @@ function App() {
     <div className='App'>
       <Router>
         <Link to="/vue">vue应用</Link>
-        {/* <Link to="/react">react应用</Link> */}
+        <Link to="/react">react应用</Link>
       </Router>
       <div id="container"></div>
     </div>

@@ -8,6 +8,7 @@ let history
 let router
 let app
 function render (props = {}) {
+    console.log('跳转了')
     history = createWebHashHistory('/vue')
     router = createRouter({
         routes,

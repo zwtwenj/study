@@ -10,6 +10,12 @@ registerMicroApps([{
     container: '#container',
     activeRule: '/vue',
     loader
+}, {
+    name: 'my-react',
+    entry: '//localhost:30000',
+    container: '#container',
+    activeRule: '/react',
+    loader
 }], {
     beforeLoad: () => {
         console.log('加载前')
@@ -27,5 +33,10 @@ registerMicroApps([{
         console.log('销毁后')
     }
 })
-
-start()
+console.log(registerMicroApps)
+start({
+    sandbox: {
+        strictStyleIsolation: true, // 启用shadowDOM
+        experimentalStyleIsolation:true // 增加一个特殊的选择器规则来限定其影响范围
+    }
+})
