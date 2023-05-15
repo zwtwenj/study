@@ -13,8 +13,6 @@ function render (props = {}) {
         routes,
         history
     })
-    console.log(routes)
-    console.log(router)
     app = createApp(App)
     let { container } = props
     app.use(router).mount(props.container ? container.querySelector('#app') : '#app')

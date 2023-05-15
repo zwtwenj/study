@@ -10,6 +10,12 @@ registerMicroApps([{
     container: '#container',
     activeRule: '/vue',
     loader
+}, {
+    name: 'my-react',
+    entry: '//localhost:30000',
+    container: '#container',
+    activeRule: '/react',
+    loader
 }], {
     beforeLoad: () => {
         console.log('加载前')
