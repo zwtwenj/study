@@ -35,6 +35,7 @@ registerMicroApps([{
 })
 console.log(registerMicroApps)
 start({
+    prefetch: true, // 开启预加载
     sandbox: {
         strictStyleIsolation: true, // 启用shadowDOM
         experimentalStyleIsolation:true // 增加一个特殊的选择器规则来限定其影响范围

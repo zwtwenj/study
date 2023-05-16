@@ -7,6 +7,7 @@ function App() {
         <Link to="/react">react应用</Link>
       </Router>
       <div id="container"></div>
+      <div id="container1"></div>
     </div>
   );
 }
