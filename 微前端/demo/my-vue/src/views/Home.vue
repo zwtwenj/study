@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="home">
         这里是home
         <button @click="toAbout">跳转</button>
     </div>

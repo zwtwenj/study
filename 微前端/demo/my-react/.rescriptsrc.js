@@ -1,6 +1,6 @@
 module.exports = {
     webpack:(config)=>{
-      config.output.library = 'my-react';  
+      config.output.library = 'm-react';  
       config.output.libraryTarget = 'umd';
       config.output.publicPath = '//localhost:30000/';
       return config
