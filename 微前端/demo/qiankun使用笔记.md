@@ -89,10 +89,32 @@ vue3项目中，进行以下配置：
 
 ![img](img13.png)
     
+    然后是start函数中的预加载方法，在start中调用了函数doPrefetchStrategy，再找到prefetch.js文件中，在函数中执行了prefetchAfterFirstMounted函数
+
+![img](img16.png)
 
 
-## 样式隔离
+## css沙箱
 
+    影子dom形式。mode: open/close可以控制影子dom能否被访问
     
+![img](img14.png)
+
+![img](img15.png)
 
 ## JS沙箱
+    
+    快照沙箱
+    1.空应用->vue应用
+    在加载子应用的时候，记录window哪些属性被更改，相当于拍照
+    2.vue应用到react应用
+    将当前window的属性进行一次快照，然后再根据步骤1的快照还原widnow，再去加载react子应用
+    3.react应用->vue应用
+    将当前window属性进行一次快照，将window还原到2步骤中卸载vue之前的快照，之后加载vue应用
+
+    缺点：window属性污染，只能支持单例子应用
+
+    proxy沙箱
+    与快照沙箱相比，用proxy对象代替window对象，并不会对window属性进行污染，能支持同时加载多个子应用
+    缺点：proxy兼容性问题，在低版本浏览器下无法支持多例模式，单例会采用快照沙箱方案代替
+    

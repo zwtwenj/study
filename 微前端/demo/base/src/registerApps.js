@@ -33,7 +33,7 @@ registerMicroApps([{
         console.log('销毁后')
     }
 })
-console.log(registerMicroApps)
+console.log(start)
 start({
     prefetch: true, // 开启预加载
     sandbox: {
