@@ -93,6 +93,39 @@ vue3项目中，进行以下配置：
 
 ![img](img16.png)
 
+    prefecth.js中prefetchAfterFirstMounted方法
+
+![img](img17.png)
+
+    预加载的prefetch方法,等第一个应用加载完毕后，再去调用importEntry获取其他app资源
+
+![img](img18.png)
+
+    start过程：是否支持预加载？是的话调用doPrefetchStrategy方法->调用prefetchAfterFirstMounted监听第一个应用的挂载事件->第一个应用挂载完毕，调用prefetch方法->importEntry
+                             否的话不预加载其他应用
+               是否支持沙箱？是的话是否支持proxy？      是的话用proxy对象做代理沙箱 ？ 是的话调用start方法
+                            否的话直接调用start方法         否的话变成快照沙箱？是否支持单例模式？是的话调用start方法
+                                                                                             否的话报错
+
+    loadApp方法
+    不太好调试
+
+![img](img19.png)
+
+    参照这个流程在转码过的js文件里找到了template赋值的位置，这里拿到了子应用html的字符串
+
+![img](img20.png)
+![img](img21.png)
+
+    调用getDefaultTplWrapper函数之后，template字符串变成了这样，安了个包裹容器
+
+![img](img22.png)
+![img](img23.png)
+
+    调用createElement，这里使用了影子dom，接下来就一步步调下去了
+
+![img](img24.png)
+![img](img25.png)
 
 ## css沙箱
 
