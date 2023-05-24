@@ -21,4 +21,14 @@
 
 ![img](img3.png)
 
+    接收到错误了，配置成功了
+
+![img](img4.png)
+
+    注意：sentry接收到错误之后通过network请求向服务器发送数据
+
+![img](img5.png)
+
+    在Sentry.init执行前产生的错误并不会进行上报
+    
 ## 

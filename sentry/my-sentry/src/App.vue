@@ -2,9 +2,20 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
+    <button @click="toError">测试</button>
   </nav>
   <router-view/>
 </template>
+
+<script>
+export default {
+  methods: {
+    toError () {
+      throw new Error('sentry error')
+    }
+  }
+}
+</script>
 
 <style>
 #app {
