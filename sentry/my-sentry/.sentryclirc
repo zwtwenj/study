@@ -1,0 +1,7 @@
+[defaults]
+url = https://c986fd23926a4615a6f965be9e7ef384@o4505232974282752.ingest.sentry.io/4505232977428480
+org = zhouwenjie
+project = javascript-vue1.0
+
+[auth]
+token = faa0ddb68ebb42398f4de01e953db9461d29c4951d5345729f253de09975d0ea
