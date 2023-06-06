@@ -31,4 +31,6 @@
 
     在Sentry.init执行前产生的错误并不会进行上报
     
-## 
+## @sentry/cli安装失败
+
+    上传sourcemap源码时，可以使用@sentry/cli上传或者使用插件@sentry/webpack-plugin进行自动化上传，但实际实验过程中，@sentry/cli使用npm，cnpm，yarn始终安装不了，nvm切换过node版本也无效，查了很多资料试了很多方法也无法安装
