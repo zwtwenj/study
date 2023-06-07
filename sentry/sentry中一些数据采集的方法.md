@@ -214,6 +214,12 @@
             }
 
             看着太多了，简单来写就是这样
+            const xhrPropotype = XMLHttpRequest.prototype
+            const oldOpen = xhrPropotype.open
+            xhrPropotype.open = function () {
+                console.log(arguments)
+                oldOpen.apply(this, arguments)
+            }
 
         fetch通过拦截整个方法（需要讨论，reject的情况）
         function instrumentFetch() {

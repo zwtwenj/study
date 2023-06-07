@@ -10,6 +10,8 @@
 </template>
 
 <script setup>
+import { useStore } from 'vuex'
+const store = useStore()
 const props = defineProps({
     componentItem: {
         type: Object,
@@ -18,7 +20,11 @@ const props = defineProps({
 })
 
 const dragStartHandle = (e, data) => {
-    
+    store.commit('setComponentData', data)
+}
+
+const dragendHandle = (e) => {
+    // store.commit('setComponentData', null)
 }
 
 // export default {

@@ -21,7 +21,7 @@ class Observer {
         // 判断数据，如果是数组
         if (Array.isArray(value)) {
             // 对数组劫持的处理
-            value.__proto__ = ArrayMethods      
+            value.__proto__ = ArrayMethods
         }
         this.walk(value)
     }

@@ -1,6 +1,16 @@
 <template>
     <div class="m-button">
-        这是自定义按钮
+        按钮
     </div>
 </template>
+
+<style lang="scss" scoped>
+.m-button{
+    padding: 5px;
+    display: inline-block;
+    background-color: gray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
 
