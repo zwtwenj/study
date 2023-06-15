@@ -11,6 +11,7 @@
 
 <script setup>
 import { useStore } from 'vuex'
+import deepCopy from 'deepcopy'
 const store = useStore()
 const props = defineProps({
     componentItem: {
@@ -20,13 +21,14 @@ const props = defineProps({
 })
 
 const dragStartHandle = (e, data) => {
-    store.commit('setComponentData', data)
+    store.commit('setComponentData', deepCopy(data))
 }
 
 const dragendHandle = (e) => {
-    // store.commit('setComponentData', null)
+    setTimeout(() => {
+        store.commit('setComponentData', null)
+    }, 0)
 }
-
 // export default {
 //     // props: {
 //     //     componentItem: Object

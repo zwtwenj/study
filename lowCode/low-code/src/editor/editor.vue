@@ -11,11 +11,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import EditorTop from './editorTop.vue'
 import EditorMaterial from './editorMaterial/editorMaterial.vue'
 import EditorConfig from './editorConfig.vue'
-import EditorCanvas from './editorCanvas.vue'
+import EditorCanvas from './editorCanvas/editorCanvas.vue'
 import EditorTree from './editorTree.vue'
 export default {
   name: 'editor',

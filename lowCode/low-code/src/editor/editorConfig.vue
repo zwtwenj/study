@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .editor-config{
-    width: 200px;
+    width: 300px;
     background: #232324;
     
 }
