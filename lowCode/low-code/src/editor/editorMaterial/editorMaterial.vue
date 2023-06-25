@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, defineComponent } from 'vue'
 import materialData from '../../material/index'
 import editorMaterialItem from './editorMaterialItem.vue'
 export default {
@@ -14,6 +14,19 @@ export default {
     },
     setup () {
         const componentMenu = ref(materialData)
+        const createComponent = () => {
+            const component = defineComponent({
+                props: {
+                    msg: { type: String }
+                },
+                setup (props) {
+                    return () => <div>
+                        这里是测试组件{props.msg}
+                    </div>
+                }
+            })
+        }
+        createComponent()
         return {
             componentMenu
         }
