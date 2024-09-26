@@ -25,7 +25,9 @@ Promise.resolve().then(() => {
 //   创建两个微任务队列3行的Promise.resolve和10行.then
 // 3.执行微任务队列的代码
 //   执行第三行的Promise.resolve和第11行
-//   生成两个微任务3行的return和12行的.then     并不是说return是微任务，是then的实现中，return出来的东西会被创建Promise的微任务包裹，所以return Promise.resolve()等于创建了两次微任务
+//   生成两个微任务3行的return和12行的.then
+//   并不是说return是微任务，是then的实现中，return出来的东西会被创建Promise的微任务包裹
+//   所以return Promise.resolve()等于创建了两次微任务
 // 4.执行微任务队列的代码
 //   执行4行的.then和13行代码生成1个微任务14行的.then
 //   执行同步代码5行的console.log(res)

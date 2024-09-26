@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>测试</title>
+    </head>
+    <body>
+        <div id="aaa" style="color: red;font-size: 100px"></div>
+        <button id="btn">按钮</button>
+        <script>
+            let ele = document.getElementById('aaa')
+            let btn = document.getElementById('btn')
+            let n = 0
+            function fn() {
+                setTimeout(() => {
+                    n = n + 1
+                    ele.innerHTML = n
+                    if (n < 120) {
+                        fn()
+                    }
+                }, 0);
+            }
+            // btn.onclick = fn
+            function fn1() {
+                window.queueMicrotask(() => {
+                    n = n + 1
+                    ele.innerHTML = n
+                    if (n < 40000) {
+                        fn1()
+                    }
+                })
+            }
+            btn.onclick = fn1
+        </script>
+    </body>
+</html>
