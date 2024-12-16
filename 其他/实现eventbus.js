@@ -1,7 +1,6 @@
 class EventBus{
     constructor(){
         this.eventMap = new Map()
-        this.eventMapOnce = new Map()
     }
     on (string, cb) {
         let cbs = this.eventMap.get(string)
