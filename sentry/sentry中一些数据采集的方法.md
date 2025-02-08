@@ -15,7 +15,7 @@
     // 设置事件的严重性：
     scope.setLevel(‘error’)
     // 设置附加数据：
-    scope.setExtra(‘data’, { request: { a: 1, b: 2 })
+    scope.setExtra(‘data’, { request: { a: 1, b: 2 } })
     // 添加一个面包屑
     Sentry.addBreadcrumb({
         category: "auth",
