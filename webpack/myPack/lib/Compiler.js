@@ -1,4 +1,5 @@
 const path = require('path')
+const ejs = require('ejs')
 const fs = require('fs')
 const babylon = require('babylon')
 const types = require('@babel/types')
@@ -46,7 +47,7 @@ class Compiler{
                     node.callee.name = '__webpack_require__'
                     let moduleName = node.arguments[0].value  // ./add.js
                     // 判断文件有没有扩展名
-                    moduleName = moduleName + ((token.extname) ? "" : ".js")
+                    moduleName = moduleName + ((path.extname(moduleName)) ? "" : ".js")
                     moduleName = "./" + path.join(parentPath, moduleName) // ./src/add.js
                     // 收集依赖
                     dependencies.push(moduleName)
@@ -65,7 +66,7 @@ class Compiler{
         let source = this.getSource(modulePath)
         // path.relative用于计算两个路径之间的相对路径
         let moduleName = "./" + path.relative(this.root, modulePath)
-        console.log(moduleName)
+        // console.log(moduleName)
         if (isEntry) {
             this.entryId = moduleName // 存入口文件路径
         }
@@ -79,9 +80,21 @@ class Compiler{
         })
     }
 
+    // 打包文件
+    emitFile() {
+        let main = path.join(this.config.output.path, this.config.output.filename)
+        let templateStr = this.getSource(path.join(__dirname, 'bundle.ejs'))
+        // console.log(templateStr)
+        let result = ejs.render(templateStr, { entryId: this.entryId, modules: this.modules })
+        this.assets = {}
+        this.assets[main] = result
+        fs.writeFileSync(main, this.assets[main])
+    }
+
     run() {
         console.log('开始编译')
         this.buildModule(path.resolve(this.root, this.entry), true)
+        this.emitFile()
     }
 }
 
