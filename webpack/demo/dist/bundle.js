@@ -21,6 +21,7 @@
         "./src\main.js":
         (function(module, exports, __webpack_require__){
         eval(`let add = __webpack_require__("./src\\add.js");
+__webpack_require__("./src\\style.less");
 console.log(add(1, 2));`)
         }),
     
@@ -30,6 +31,13 @@ console.log(add(1, 2));`)
   return a + b;
 }
 module.exports = add;`)
+        }),
+    
+        "./src\style.less":
+        (function(module, exports, __webpack_require__){
+        eval(`let style = document.createElement('style');
+style.innerHTML = "body {\\n  background: red;\\n}\\nbody #a {\\n  color: #FFF;\\n}\\n";
+document.head.appendChild(style);`)
         }),
     
 })

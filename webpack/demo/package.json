@@ -12,6 +12,10 @@
     "@babel/generator": "^7.26.8",
     "@babel/traverse": "^7.26.8",
     "@babel/types": "^7.26.8",
-    "babylon": "^6.18.0"
+    "babylon": "^6.18.0",
+    "css-loader": "^7.1.2",
+    "less": "^4.2.2",
+    "less-loader": "^12.2.0",
+    "style-loader": "^4.0.0"
   }
 }

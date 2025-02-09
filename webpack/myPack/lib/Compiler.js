@@ -5,6 +5,7 @@ const babylon = require('babylon')
 const types = require('@babel/types')
 const traverse = require('@babel/traverse').default
 const generator = require('@babel/generator').default
+const { SyncHook } = require('tapable')  // 发布订阅模式
 
 class Compiler{
     constructor(config){
@@ -17,10 +18,43 @@ class Compiler{
         this.root = process.cwd()
         // 用来保存所有模块依赖
         this.modules = {  }
+        // 钩子
+        this.hooks = {
+            entryOption: new SyncHook(), // 开始
+            compile: new SyncHook(), // 编译
+            afterCompile: new SyncHook(), // 编译完成
+            run: new SyncHook(),  // 运行
+            emit: new SyncHook(), // 发射
+            done: new SyncHook(), // 完成
+        }
+        let plugins = this.config.module.plugins
+        if (Array.isArray(plugins)) {
+            plugins.forEach(p => {
+                p.apply(this)
+            })
+        }
     }
     // 读取模块内容
     getSource(modulePath) {
-        return fs.readFileSync(modulePath, 'utf-8')
+        let rules = this.config.module.rules
+        let content = fs.readFileSync(modulePath, 'utf-8')
+        for (let i = 0; i < rules.length; i++) {
+            let rule = rules[i]
+            let {test, use} = rule
+            let len = use.length - 1 // loader的个数
+            if (test.test(modulePath)) {
+                function normalLoader() {
+                    let loader = require(use[len--])
+                    content = loader(content)
+                    // console.log(content)
+                    if (len >= 0) {
+                        normalLoader()
+                    }
+                }
+                normalLoader()
+            }
+        }
+        return content
     }
     // 模块文件解析
     // source-->文件内容 parentPath-->文件目录
@@ -93,8 +127,13 @@ class Compiler{
 
     run() {
         console.log('开始编译')
+        this.hooks.run.call()  // 开始
+        this.hooks.compile.call()   // 开始编译
         this.buildModule(path.resolve(this.root, this.entry), true)
+        this.hooks.afterCompile.call()  // 编译完成
+        this.hooks.emit.call()   // 
         this.emitFile()
+        this.hooks.done.call()   // 完成
     }
 }
 
